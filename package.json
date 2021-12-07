@@ -1,0 +1,28 @@
+{
+  "name": "gamu",
+  "version": "1.0.0",
+  "description": "Game Project",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "mongoose": "^6.0.13",
+    "requirejs": "^2.3.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SheTookEverthing/Gamu.git"
+  },
+  "keywords": [
+    "Rogulite"
+  ],
+  "author": "Hang Chen",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/SheTookEverthing/Gamu/issues"
+  },
+  "homepage": "https://github.com/SheTookEverthing/Gamu#readme"
+}

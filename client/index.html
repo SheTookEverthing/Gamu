@@ -1,28 +1,64 @@
 <html>
-    <head>
-        <link rel=stylesheet type=text/css href="stylesheet.css">
-        <title>To Become</title>
-    </head>
-    <body>
-        <div id = "title">
-            <h1>
-                To Become
-            </h1>
-        </div>
-        <div id = "content">
-            <h1>
-                <table id = "table">
-                    <tr>
-                        <th>Play</th>
-                    </tr>
-                    <tr>
-                        <th>Setting</th>
-                    </tr>
-                    <tr>
-                        <th>About</th>
-                    </tr>
-                </table>
-            </h1>
-        </div>
-    </body>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel=stylesheet type=text/css href="stylesheet.css">
+    <title>To Become</title>
+</head>
+
+<body>
+    <div id="title">
+        <h1>
+            To Become
+        </h1>
+    </div>
+    <div id="content">
+        <h1>
+            <table id="table">
+                <tr>
+                    <th id="play"> Play</th>
+                </tr>
+                <tr>
+                    <th>Setting</th>
+                </tr>
+                <tr>
+                    <th>About</th>
+                </tr>
+            </table>
+        </h1>
+    </div>
+</body>
+
+<script src="Player/characterpage.js"></script>
+
+<script>
+    $("#play").click(() => { loadfile() });
+
+    function loadfile() {
+        files = "<tr> <th id = 'file1'> File 1 </th> </tr> <tr> <th id = 'file2'> File 2 </th> </tr> <tr> <th id = 'file3'> File 3 </th> </tr>"
+        $("#table").html(files);
+
+        function viewfile(filetype) {
+            status = "<tr> <th id = '" + filetype + "'> " + filetype + " </th> </tr> <tr> <th id = 'stats'> Stats </th> </tr>"
+            $("#table").html(status);
+
+            $("#stats").click(() => console.log("game"))
+        }
+
+        function loadsave(fileID) {
+            
+        }
+
+
+
+        $("#file1").click(() => viewfile("File 1"));
+        $("#file2").click(() => console.log("hello"));
+        $("#file3").click(() => console.log("hello"));
+    }
+
+        //window.location.href = 'town/town.html';
+</script>
+
 </html>
