@@ -1,7 +1,8 @@
 <html>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <title>Town</title>
+    </script>
+        <title>Tower Base</title>
     </head>
 
     <style>
@@ -64,7 +65,6 @@
     <body>
         <div>
 
-            <p><button><a href = "guild.html">Guild</a></button></p>
             <p><button><a href = "store.html">Store</a></button></p>
             <p><button><a href = "MechStore.html">Mechanical Store</a></button></p>
             <p><button>Explore</button></p>
@@ -79,8 +79,8 @@
             </div>
     
             <div class="tab">
-                <button class="tablinks" onclick="openProfile(event, 'Stats')">Stats</button>
-                <button class="tablinks" onclick="openProfile(event, 'Skills & Talents')">Skills & Talents</button>
+                <button class="tablinks" id = "defaultOpen" onclick="openProfile(event, 'Stats')">Stats</button>
+                <button class="tablinks" onclick="openProfile(event, 'Skills & Talents')">Cards</button>
                 <button class="tablinks" onclick="openProfile(event, 'Equipment')">Equipment</button>
                 <button class="tablinks" onclick="openProfile(event, 'Inventory')">Inventory</button>
                 <button class="tablinks" onclick="openProfile(event, 'Quest')">Quest</button>
@@ -93,19 +93,25 @@
                 <p>Defense: <span id="pd">0</span> </p>
                 <p>Dexterity: <span id="d">0</span></p>
                 <br />
-                <p>Physical Resistance <span id="phy_res">0</span> </p>
-                <p>Magical Resistance <span id="phy_res">0</span> </p>
-                <p>Fire Resistance <span id="phy_res">0</span> </p>
-                <p>Water Resistance <span id="phy_res">0</span> </p>
-                <p>Earth Resistance <span id="phy_res">0</span> </p>
-                <p>Air Resistance <span id="phy_res">0</span> </p>
+                <p>Physical Damage <span id="phy_dmg">0</span> </p>
+                <p>Fire Damage <span id="fire_dmg">0</span> </p>
+                <p>Water Damage <span id="water_dmg">0</span> </p>
+                <p>Earth Damage <span id="earth_dmg">0</span> </p>
+                <p>Air Damage <span id="air_dmg">0</span> </p>
                 <br />
-                <button id="freeexp" >free lv up</button>
+                <p>Physical Resistance <span id="phy_res">0</span> </p>
+                <p>Fire Resistance <span id="fire_res">0</span> </p>
+                <p>Water Resistance <span id="water_res">0</span> </p>
+                <p>Earth Resistance <span id="earth_res">0</span> </p>
+                <p>Air Resistance <span id="air_res">0</span> </p>
+
+                <button id="freeexp" class = "" >free lv up</button>
             </div>
     
             <div id="Skills & Talents" class="tabcontent">
-                <h3><a>Skills</a></h3>
+                <h3><a>Deck</a></h3>
                 <br />
+                <h3><a>Cards</a></h3>
                 <div id="skills"></div>
             </div>
     
@@ -125,9 +131,7 @@
             </div>
     
             <div id="Inventory" class="tabcontent">
-                <p>10 Gold Coins</p>
-                <p>Beaten Up Backpack</p>
-                <p>Small Canteen</p>
+                <p id="gold">Gold</p>
             </div>
     
             <div id="Quest" class="tabcontent">
@@ -139,4 +143,50 @@
         </div>
     
     </body>
+
+
+
+    <script>
+        //open this tab by default
+
+        function loadplayer(){
+            var N_O_file = sessionStorage.getItem("File")
+
+            if(N_O_file == "New"){
+                sessionStorage.setItem("",0);
+                sessionStorage.setItem("Level",0);
+                sessionStorage.setItem("Health",10);
+
+                var lv = sessionStorage.getItem("Level");
+                var hp = sessionStorage.getItem("Health");
+
+                document.getElementById("lv").innerHTML = lv;
+                document.getElementById("hp").innerHTML = hp;
+            }
+        }
+        function update(){
+            player.level += 10;
+            loadplayer();
+        }
+
+        function openProfile(evt, profileTab) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(profileTab).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+
+        //loads
+
+        loadplayer();
+        document.getElementById("defaultOpen").click();
+        $("#freeexp").click(() => update());
+    </script>
 </html>
